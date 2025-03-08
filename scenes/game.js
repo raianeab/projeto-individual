@@ -24,9 +24,9 @@ export class GameScene extends Phaser.Scene {
         // Carrega e toca a música de fundo
        // this.musica = this.sound.add("musicaFundo");
        // this.musica.play({
-            loop: true,
-            volume: 0.05
-        });
+           // loop: true,
+           // volume: 0.05
+      //  });
 
         // Cria o vídeo de fundo
         const video = this.add.video(this.larguraJogo / 2, this.alturaJogo / 2, "paisagem");
