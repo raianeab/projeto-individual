@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Redirecionamento</title>
+    <script>
+        // Redireciona todas as rotas para o index.html
+        sessionStorage.redirect = location.href.split('/').pop();
+        location.href = '/';
+    </script>
+</head>
+<body>
+    Redirecionando...
+</body>
+</html>
