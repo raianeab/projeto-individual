@@ -12,7 +12,7 @@ export class GameScene extends Phaser.Scene {
         // Carrega os recursos necessários para o jogo (vídeos, imagens e áudio)
         this.load.video("paisagem", "../assets/paisagem.mp4", 'loadeddata', false, true);
         this.load.spritesheet("menino", "../assets/menino.png", { frameWidth: 32, frameHeight: 32 });
-        this.load.audio("musicaFundo", "../assets/musica.mp3");
+        //this.load.audio("musicaFundo", "../assets/musica.mp3");
         this.load.spritesheet("fantasma", "../assets/fantasma.png", { frameWidth: 32, frameHeight: 32 });
     }
 
@@ -22,8 +22,8 @@ export class GameScene extends Phaser.Scene {
         this.tempoRestante = 240; // Define o tempo inicial
 
         // Carrega e toca a música de fundo
-        this.musica = this.sound.add("musicaFundo");
-        this.musica.play({
+       // this.musica = this.sound.add("musicaFundo");
+       // this.musica.play({
             loop: true,
             volume: 0.05
         });
@@ -112,7 +112,7 @@ export class GameScene extends Phaser.Scene {
                 this.tempoRestante--; // Decrementa o tempo restante
                 this.timerText.setText('Tempo: ' + this.tempoRestante + 's'); // Atualiza o texto do tempo
                 if (this.tempoRestante <= 0) { // Se o tempo acabar
-                    this.musica.stop(); // Para a música
+                    //this.musica.stop(); // Para a música
                     this.scene.start('EndScene'); // Muda para a cena de fim de jogo
                 }
             },
@@ -150,7 +150,7 @@ export class GameScene extends Phaser.Scene {
 
         // Se a pontuação atingir 15, o jogo termina e vai para a tela de vitória
         if (this.pontuacao === 15) {
-            this.musica.stop(); // Para a música
+           // this.musica.stop(); // Para a música
             this.scene.start('WinScene'); // Muda para a cena de vitória
         } else {
         }
