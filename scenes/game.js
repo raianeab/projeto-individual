@@ -10,7 +10,7 @@ export class GameScene extends Phaser.Scene {
 
     preload() {
         // Carrega os recursos necessários para o jogo (vídeos, imagens e áudio)
-        this.load.video("paisagem", "../assets/paisagem.mp4", 'loadedata', false, true);
+        this.load.video("paisagem", "assets/paisagem.mp4", 'loadedata', false, true);
         this.load.spritesheet("menino", "../assets/menino.png", { frameWidth: 32, frameHeight: 32 });
         //this.load.audio("musicaFundo", "../assets/musica.mp3");
         this.load.spritesheet("fantasma", "../assets/fantasma.png", { frameWidth: 32, frameHeight: 32 });
