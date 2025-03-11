@@ -9,11 +9,11 @@ export class GameScene extends Phaser.Scene {
     }
 
     preload() {
-        // Carrega os recursos necessários para o jogo (vídeos, imagens e áudio)
-        this.load.video("paisagem", "assets/paisagem.mp4", 'loadedata', false, true);
-        this.load.spritesheet("menino", "../assets/menino.png", { frameWidth: 32, frameHeight: 32 });
-        //this.load.audio("musicaFundo", "../assets/musica.mp3");
-        this.load.spritesheet("fantasma", "../assets/fantasma.png", { frameWidth: 32, frameHeight: 32 });
+        // Corrigido o caminho relativo
+        this.load.video("paisagem", "assets/paisagem.mp4", 'loadeddata', false, true);
+        this.load.spritesheet("menino", "assets/menino.png", { frameWidth: 32, frameHeight: 32 });
+        // this.load.audio("musicaFundo", "assets/musica.mp3");
+        this.load.spritesheet("fantasma", "assets/fantasma.png", { frameWidth: 32, frameHeight: 32 });
     }
 
     create() {
@@ -22,11 +22,11 @@ export class GameScene extends Phaser.Scene {
         this.tempoRestante = 240; // Define o tempo inicial
 
         // Carrega e toca a música de fundo
-       // this.musica = this.sound.add("musicaFundo");
-       // this.musica.play({
-           // loop: true,
-           // volume: 0.05
-      //  });
+        // this.musica = this.sound.add("musicaFundo");
+        // this.musica.play({
+        // loop: true,
+        // volume: 0.05
+        //  });
 
         // Cria o vídeo de fundo
         const video = this.add.video(this.larguraJogo / 2, this.alturaJogo / 2, "paisagem");
@@ -91,7 +91,7 @@ export class GameScene extends Phaser.Scene {
             // Remove o fantasma ao ser capturado
             this.fantasmas = this.fantasmas.filter(f => f !== fantasma);
             fantasma.destroy();
-            
+
             this.pontuacao += 1; // Incrementa a pontuação
             this.placar.setText('Pontuação: ' + this.pontuacao); // Atualiza o texto da pontuação
         });
@@ -150,7 +150,7 @@ export class GameScene extends Phaser.Scene {
 
         // Se a pontuação atingir 15, o jogo termina e vai para a tela de vitória
         if (this.pontuacao === 15) {
-           // this.musica.stop(); // Para a música
+            // this.musica.stop(); // Para a música
             this.scene.start('WinScene'); // Muda para a cena de vitória
         } else {
         }
