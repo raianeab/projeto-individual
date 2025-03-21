@@ -20,13 +20,36 @@ export class GameScene extends Phaser.Scene {
         // Inicialização de variáveis de pontuação e tempo
         this.pontuacao = 0; // Define a pontuação inicial
         this.tempoRestante = 240; // Define o tempo inicial
+        // Configuração inicial do jogo
+        var config = {
+            type: Phaser.AUTO, // Define o renderizador automático (WebGL ou Canvas)
+            width: 432, // Largura inicial do jogo
+            height: 1000, // Altura inicial do jogo
 
-        // Carrega e toca a música de fundo
-        // this.musica = this.sound.add("musicaFundo");
-        // this.musica.play({
-        // loop: true,
-        // volume: 0.05
-        //  });
+            scale: {
+                mode: Phaser.Scale.FIT, // Ajusta o jogo para caber na tela
+                autoCenter: Phaser.Scale.CENTER_BOTH // Centraliza o jogo na tela
+            },
+
+            scene: {
+                // Aqui podem ser adicionadas as cenas do jogo
+            }
+        };
+
+        // Criação da instância do jogo
+        var game = new Phaser.Game(config);
+
+        // Redimensionar a tela quando a escala muda
+        game.scale.on('orientationchange', function (orientation) {
+            if (orientation === Phaser.Scale.PORTRAIT) {
+                console.log('PORTRAIT'); // Log para debug
+                game.scale.resize(window.innerWidth, window.innerHeight); // Ajusta a largura e altura do jogo
+            }
+            if (orientation === Phaser.Scale.LANDSCAPE) {
+                console.log('LANDSCAPE'); // Log para debug
+                game.scale.resize(window.innerWidth, window.innerHeight); // Ajusta a largura e altura do jogo
+            }
+        });
 
         // Cria o vídeo de fundo
         const video = this.add.video(this.larguraJogo / 2, this.alturaJogo / 2, "paisagem");
